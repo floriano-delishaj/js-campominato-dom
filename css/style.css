@@ -8,20 +8,6 @@
     margin: 0 auto;
 }
 
-.container.show {
-    display: block;
-}
-
-/* .container.small,
-.container.medium,
-.container.big {
-    display: none;
-} */
-
-/* .container.show {
-    display: block;
-} */
-
 .container.small {
     width: calc(75px * 7);
 }
@@ -59,6 +45,10 @@
     border: 2px solid #000;
 }
 
-.box.light-blue {
+.box.red {
+    background-color: red;
+}
+
+.box.blue {
     background-color: lightskyblue;
 }

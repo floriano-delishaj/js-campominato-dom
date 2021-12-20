@@ -3,7 +3,7 @@ function randomNumber (minNum, maxNum) {
     return result;
 }
 
-function getRandomNumber (k) {
+function getRandomNumbers (k) {
 
     const array = [];
 
@@ -24,11 +24,16 @@ function createBox (output, x) {
     newBox.innerHTML = x;
     output.append(newBox);
     newBox.addEventListener('click', function () {
-        if (array.includes(x)) {
-            console.log('perso')
+    do {
+        if (bombs.includes(x)) {
+            this.classList.add('red');
+            this.innerHTML = '';
+            alert('GAME OVER');
+            containerOutput.innerHTML = '';
         } else {
-            console.log('vinto');
+            this.classList.add('blue');
         }
+    } while (bombs.length < 16)
     })
 }
 
@@ -41,6 +46,7 @@ function createGrid (max) {
     }
 }
 
+let bombs = [];
 const container = document.querySelector('.container');
 const containerOutput = document.querySelector('.container-grid');
 const selectionOne = document.getElementById('selection-1');
@@ -51,14 +57,14 @@ const selectionThree = document.getElementById('selection-3');
 
 selectionOne.addEventListener('click', function () {
     containerOutput.innerHTML = ''; //ripulire la griglia
-    getRandomNumber(100);
+    bombs = getRandomNumbers(100);
     createGrid(100);
     container.classList.remove('small', 'medium');
     container.classList.add('big');
 })
 selectionTwo.addEventListener('click', function () {
     containerOutput.innerHTML = '';
-    getRandomNumber(81);
+    bombs =getRandomNumbers(81);
     createGrid(81);
     container.classList.remove('big', 'small');
     container.classList.add('medium');
@@ -66,7 +72,7 @@ selectionTwo.addEventListener('click', function () {
 
 selectionThree.addEventListener('click', function () {
     containerOutput.innerHTML = '';
-    getRandomNumber(49)
+    bombs = getRandomNumbers(49);
     createGrid(49);
     container.classList.remove('big', 'medium');
     container.classList.add('small');;
